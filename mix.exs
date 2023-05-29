@@ -32,6 +32,7 @@ defmodule Bmvp.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 3.0"},
       {:phoenix, "~> 1.7.2"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
@@ -49,7 +50,10 @@ defmodule Bmvp.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+
+      #dev
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
