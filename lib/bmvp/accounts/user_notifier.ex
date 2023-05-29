@@ -1,4 +1,6 @@
 defmodule Bmvp.Accounts.UserNotifier do
+  @moduledoc false
+
   import Swoosh.Email
 
   alias Bmvp.Mailer
@@ -8,7 +10,7 @@ defmodule Bmvp.Accounts.UserNotifier do
     email =
       new()
       |> to(recipient)
-      |> from({"Bmvp", "contact@example.com"})
+      |> from({"CashBlog", "contact@cashblog.app"})
       |> subject(subject)
       |> text_body(body)
 
