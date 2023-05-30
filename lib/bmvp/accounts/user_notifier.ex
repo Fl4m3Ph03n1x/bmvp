@@ -10,7 +10,7 @@ defmodule Bmvp.Accounts.UserNotifier do
     email =
       new()
       |> to(recipient)
-      |> from({"CashBlog", "contact@cashblog.app"})
+      |> from({"CashBlog", "contact@cashblog.org"})
       |> subject(subject)
       |> text_body(body)
 
