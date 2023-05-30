@@ -105,7 +105,8 @@ if config_env() == :prod do
   config :bmvp, Bmvp.Mailer,
     adapter: Swoosh.Adapters.Mailgun,
     api_key: System.get_env("MAILGUN_API_KEY"),
-    domain: System.get_env("MAILGUN_DOMAIN")
+    domain: System.get_env("MAILGUN_DOMAIN"),
+    base_url: "https://api.eu.mailgun.net/v3"
 
   #
   # For this example you need include a HTTP client required by Swoosh API client.
