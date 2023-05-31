@@ -28,14 +28,17 @@
             <%= @current_user.email %>
           </li>
           <li>
-            <.link href={~p"/users/settings"}
-              class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700">
+            <.link href={~p"/articles"} class="btn">
+              My articles
+            </.link>
+          </li>
+          <li>
+            <.link href={~p"/users/settings"} class="btn">
               Settings
             </.link>
           </li>
           <li>
-            <.link href={~p"/users/log_out"} method="delete"
-              class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700">
+            <.link href={~p"/users/log_out"} method="delete" class="btn">
               Log out
             </.link>
           </li>

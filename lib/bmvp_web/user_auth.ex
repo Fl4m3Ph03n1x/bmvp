@@ -1,4 +1,6 @@
 defmodule BmvpWeb.UserAuth do
+  @moduledoc false
+
   use BmvpWeb, :verified_routes
 
   import Plug.Conn
