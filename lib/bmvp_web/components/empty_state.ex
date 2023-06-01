@@ -15,11 +15,9 @@ defmodule BmvpWeb.Component.EmptyState do
       </h2>
       <div class="mt-10 mx-auto w-full max-w-xs">
         <img
-          scr={~p"/images/#{@image}"}
-          alt="Write a blog"
           class="w-full max-w-none rounded-xl ring-1 ring-gray-400/10 md:-ml-4 lg:-ml-0"
-          width="2432"
-          height="1442"
+          src={~p"/images/#{@image}"}
+          alt="Write a blog"
         />
       </div>
     </div>
