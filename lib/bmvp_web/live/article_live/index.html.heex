@@ -21,7 +21,7 @@
           <%= article.title %>
         </:col>
         <:col :let={{_id, article}} label="Content">
-          <%= article.content %>
+          <%= String.slice(article.content, 0, 200) %>
         </:col>
         <:action :let={{_id, article}}>
           <div class="sr-only">

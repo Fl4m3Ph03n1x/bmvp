@@ -52,6 +52,7 @@ defmodule Bmvp.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:hackney, "~> 1.18"},
+      {:faker, "~> 0.17.0"},
 
       # dev
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
