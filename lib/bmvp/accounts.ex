@@ -27,6 +27,24 @@ defmodule Bmvp.Accounts do
   end
 
   @doc """
+  Gets a user by username.
+
+  ## Examples
+
+      iex> get_user_by_username("fl4m3")
+      {:ok, %User{}}
+
+      iex> get_user_by_username("unknown")
+      {:error, :not_found}
+
+  """
+  def get_user_by_username(username) when is_binary(username) do
+    User
+    |> Repo.get_by(username: username)
+    |> Repo.to_tagged_tuple()
+  end
+
+  @doc """
   Gets a user by email and password.
 
   ## Examples
