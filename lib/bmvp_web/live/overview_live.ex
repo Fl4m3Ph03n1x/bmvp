@@ -6,14 +6,6 @@ defmodule BmvpWeb.OverviewLive do
   def render(assigns) do
     ~H"""
     <%= if is_nil(@author) do %>
-      <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full">
-    <body class="h-full">
-    ```
-    -->
       <main class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div class="text-center">
           <p class="text-base font-semibold text-indigo-600">404</p>
@@ -47,16 +39,16 @@ defmodule BmvpWeb.OverviewLive do
                 <div class="flex items-center gap-x-4 text-xs">
                   <time datetime="2020-03-16" class="text-gray-500"><%= article.updated_at %></time>
                 </div>
-                <div class="group relative">
-                  <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                    <a href="#">
+                <a href={~p"/articles/#{article.id}"}>
+                  <div class="group relative">
+                    <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                       <span class="absolute inset-0"></span> <%= article.title %>
-                    </a>
-                  </h3>
-                  <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                    <%= String.slice(article.content, 0, 200) %>
-                  </p>
-                </div>
+                    </h3>
+                    <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+                      <%= String.slice(article.content, 0, 200) %>
+                    </p>
+                  </div>
+                </a>
               </article>
             <% end %>
           </div>
@@ -72,12 +64,7 @@ defmodule BmvpWeb.OverviewLive do
       {:ok, assign(socket, author: user, articles: articles)}
     else
       _error ->
-        socket =
-          socket
-          |> assign(author: nil, articles: [])
-          |> put_flash(:error, "Author not found!")
-
-        {:ok, socket}
+        {:ok, assign(socket, author: nil, articles: [])}
     end
   end
 end

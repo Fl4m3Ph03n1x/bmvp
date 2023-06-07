@@ -20,6 +20,12 @@ if System.get_env("PHX_SERVER") do
   config :bmvp, BmvpWeb.Endpoint, server: true
 end
 
+# See https://github.com/PJUllrich/lemon_ex
+# See 'BMVP .env' in LP Vault for more info
+config :lemon_ex,
+  api_key: System.fetch_env!("LEMONSQUEEZY_API_KEY"),
+  webhook_secret: System.fetch_env!("LEMONSQUEEZY_WEBHOOK_SECRET")
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||
