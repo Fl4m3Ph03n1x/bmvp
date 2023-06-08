@@ -4,9 +4,38 @@ defmodule Bmvp.Articles do
   """
 
   import Ecto.Query, warn: false
-  alias Bmvp.Repo
 
+  alias Bmvp.Repo
   alias Bmvp.Articles.Article
+  alias Money
+
+  @doc """
+  Returns the given article's price in cents (EUR).
+
+  ## Examples
+
+      iex> article = %Article{}
+      iex> get_price_in_cents(article)
+      10000
+  """
+  def get_price_in_cents(article) do
+    {:EUR, cents, -2, _rest} = Money.to_integer_exp(article.price)
+    cents
+  end
+
+  @doc """
+  Returns where or not the given author is the author of the given article.
+
+  ## Examples
+
+      iex> user = %User{}
+      iex> article = %Article{}
+      iex> is_author(user, article)
+      true
+
+  """
+  def is_author?(nil, _article), do: false
+  def is_author?(user, article), do: user.id == article.author_id
 
   @doc """
   Returns the list of articles that belong to the given author.

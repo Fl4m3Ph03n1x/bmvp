@@ -4,4 +4,8 @@ defmodule BmvpWeb.PageController do
   def home(conn, _params) do
     render(conn, :home)
   end
+
+  def checkout_success(conn, _params) do
+    render(conn, :checkout_success)
+  end
 end

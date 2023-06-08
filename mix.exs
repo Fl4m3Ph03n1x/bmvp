@@ -54,7 +54,7 @@ defmodule Bmvp.MixProject do
       {:hackney, "~> 1.18"},
       {:faker, "~> 0.17.0"},
       {:lemon_ex, "~> 0.1.5"},
-
+      {:ex_money_sql, "~> 1.9"},
       # dev
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]

@@ -4,8 +4,16 @@
   </h2>
 
   <div class="article-content mt-10 font-normal text-md">
-    <div>
-      <%= Phoenix.HTML.Format.text_to_html(@article.content)%>
-    </div>
+    <%= if Articles.is_author?(@current_user, @article) do %>
+      <div>
+        <%= Phoenix.HTML.Format.text_to_html(@article.content) %>
+      </div>
+      <% else %>
+        <div>
+          <%= @article |> generate_article_abstract() |> Phoenix.HTML.Format.text_to_html() %>
+        </div>
+        <.button phx-click="purchase"> Buy this article for <%= @article.price %>
+        </.button>
+        <% end %>
   </div>
 </div>
