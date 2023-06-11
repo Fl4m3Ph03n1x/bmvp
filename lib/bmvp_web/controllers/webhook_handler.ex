@@ -14,7 +14,6 @@ defmodule BmvpWeb.WebhookHandler do
 
   @impl true
   def handle_event(%Event{name: "order_created"} = event) do
-    IO.inspect(event)
     %{"article_id" => article_id} = event.meta["custom_data"]
     user_email = event.data.user_email
 

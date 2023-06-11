@@ -2,6 +2,7 @@ defmodule BmvpWeb.ArticleLive.Show do
   use BmvpWeb, :live_view
 
   alias Bmvp.Articles
+  alias BmvpWeb.UrlHelper
   alias LemonEx
 
   @store_id "31126"
@@ -20,11 +21,16 @@ defmodule BmvpWeb.ArticleLive.Show do
   end
 
   @impl true
-  def handle_params(%{"id" => id}, _, socket) do
+  def handle_params(%{"id" => id} = params, _, socket) do
+    article = Articles.get_article!(id)
+    current_user = socket.assigns.current_user
+    show_full_article = can_see_full_article?(current_user, params, article)
+
     {:noreply,
      socket
+     |> assign(:show_full_article, show_full_article)
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:article, Articles.get_article!(id))}
+     |> assign(:article, article)}
   end
 
   @impl true
@@ -52,4 +58,16 @@ defmodule BmvpWeb.ArticleLive.Show do
 
   defp page_title(:show), do: "Show Article"
   defp page_title(:edit), do: "Edit Article"
+
+  defp can_see_full_article?(current_user, params, article),
+    do: Articles.is_author?(current_user, article) or has_valid_token?(params, article)
+
+  defp has_valid_token?(%{"token" => token}, article) do
+    case UrlHelper.verify_unique_article_token(token) do
+      {:ok, article_id} -> article_id == article.id
+      _error -> false
+    end
+  end
+
+  defp has_valid_token?(_params, _article), do: false
 end

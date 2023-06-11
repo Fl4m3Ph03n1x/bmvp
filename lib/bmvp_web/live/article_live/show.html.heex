@@ -4,7 +4,7 @@
   </h2>
 
   <div class="article-content mt-10 font-normal text-md">
-    <%= if Articles.is_author?(@current_user, @article) do %>
+    <%= if @show_full_article do %>
       <div>
         <%= Phoenix.HTML.Format.text_to_html(@article.content) %>
       </div>
