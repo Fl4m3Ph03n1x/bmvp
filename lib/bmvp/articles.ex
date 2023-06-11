@@ -83,6 +83,22 @@ defmodule Bmvp.Articles do
   def get_article!(id), do: Repo.get!(Article, id)
 
   @doc """
+  Gets a single article.
+
+  Raises `{:error, :not_found}` if the Article does not exist.
+
+  ## Examples
+
+      iex> get_article(123)
+      {:ok, %Article{}}
+
+      iex> get_article(456)
+      {:error, :not_found}
+
+  """
+  def get_article(id), do: Article |> Repo.get(id) |> Repo.to_tagged_tuple()
+
+  @doc """
   Creates a article.
 
   ## Examples

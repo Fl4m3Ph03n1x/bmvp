@@ -78,4 +78,19 @@ defmodule Bmvp.Accounts.UserNotifier do
     ==============================
     """)
   end
+
+  def deliver_article_url(user_email, url, article) do
+    deliver(user_email, "Your article from CashBlog.org!", """
+
+    ==============================
+
+    Hi #{user_email},
+
+    Here is the link to the article #{article.title} you just purchased!
+
+    #{url}
+
+    ==============================
+    """)
+  end
 end
