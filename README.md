@@ -12,6 +12,7 @@ This projects needs PSQL database. You can also use docker for that:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
+You can also see the fully working webpage in `cashblog.org`.
 
 ## Learn more
 
@@ -27,6 +28,11 @@ About the tools used:
   * Free icons that come with Phoenix: https://heroicons.com/
   * ChatGPT for marketing: https://chat.openai.com
   * Free(ish) deployment for Elixir apps: https://fly.io
+  * Database with Supabase: https://supabase.com/
+  * Payment system with LemonSqueezy: https://app.lemonsqueezy.com/
+  * Webhook sandbox testing with ngrok: https://ngrok.com/
+  * Mailing system using Mailgun: https://www.mailgun.com/
+  * Payed domain registration with Namecheap: https://www.namecheap.com/
 
 About Phoenix:
 
@@ -35,3 +41,7 @@ About Phoenix:
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
+
+To see emails received in test mode:
+
+  * http://localhost:4000/dev/mailbox/
