@@ -12,9 +12,25 @@ This projects needs PSQL database. You can also use docker for that:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-You can also see the fully working webpage in `cashblog.org`.
+
+# Testing billing
+
+To test the a user buying an article, you need to:
+
+  * `docker compose up -d`
+  * `mix phx.server`
+  * Run `ngrok http 4000` in a different terminal window.
+  * Go to LemonSqueezy Webhooks section (with test mode enabled) and copy the Ngrok URL into the webhook. 
+  * Sign up by creating an account.
+  * Write an article using that account.
+  * Go to `localhost:4000/u/UserHandler` where `{UserHandler}` is the handler for the user you just created. You can see/change the user handler in `Settings`.
+  * Buy the article using card 4242424242424242. This is a test card. All other data is not relevant.
+  * Once the purchase is complete check the email. If you used a fake email, check `http://localhost:4000/dev/mailbox/`. 
+  * Click the given link. You should be able to see the article.
 
 ## Learn more
+
+You can see the fully working webpage in `cashblog.org`.
 
 About the course: 
 
